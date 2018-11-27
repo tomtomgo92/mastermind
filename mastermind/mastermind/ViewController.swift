@@ -9,45 +9,61 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
-    let number = String(Int.random(in: 1000..<10000))
-    
-    @IBOutlet weak var NumberField0:  UITextField!
+    @IBOutlet weak var NumberField0: UITextField!
     @IBOutlet weak var NumberField1: UITextField!
     @IBOutlet weak var NumberField2: UITextField!
     @IBOutlet weak var NumberField3: UITextField!
+    
+    let number = String(Int.random(in: 1000..<10000))
+    var success = 0
+    var maybe = 0
 
     override func viewDidLoad()
     {
         super.viewDidLoad()
     }
+    
+    func checkSuccess(_ charUser: String, _ charRandom: String){
+        if(charUser == charRandom){
+            success += 1
+        }
+    }
+    func checkMaybe(_ char: String, _ array: Array<String>){
+        if(array.contains(char)){
+            maybe += 1
+        }
+    }
+    
+    func message(u: String){
+        if (success == 4) {
+            print("Vous avez gagné !")
+            print(number)
+        } else {
+            print("Random: \(number)")
+            print("Votre code: \(u)")
+            print("Vous avez \(success) chiffre bien placé")
+            print("Vous avez \(maybe - success) chiffre mal placé")
+        }
+    }
 
     @IBAction func BtnClicked(_ sender: Any) {
+        let userCode = NumberField0.text! + NumberField1.text! + NumberField2.text! + NumberField3.text!
+        var inputs = [NumberField0.text, NumberField1.text, NumberField2.text, NumberField3.text]
         
         
-        for i in 0..<number.count{
+       // Check numbers
+       for i in 0..<number.count{
 
-            let characters = Array(number)
-            print(characters[i])
-            print(i)
-            
-            if(String(characters[i]) == "\(NumberField)\(i)".text!){
-                print("Rouge")
-            }
+        let characters = Array(number)
+        let char = String(characters[i])
+        
+        checkSuccess(inputs[i]! , char)
+        checkMaybe(char, inputs as! Array<String>)
+        
         }
-        
-        
-        
-        let userCode =
-                NumberField0.text! +
-                NumberField1.text! +
-                NumberField2.text! +
-                NumberField3.text!
-        
-        print(number)
-        print(userCode)
-        
-        
+        message(u: userCode)
+    
+
     }
     
 

@@ -30,6 +30,7 @@
                                 <rect key="frame" x="22" y="328" width="97" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="v1a-hT-2Rc">
@@ -63,7 +64,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="NumberField" destination="p1g-lA-sow" id="Ewc-DH-1IT"/>
+                        <outlet property="NumberField0" destination="p1g-lA-sow" id="ZQp-xF-WEd"/>
                         <outlet property="NumberField1" destination="3s8-HT-Cct" id="P5Y-3r-sBZ"/>
                         <outlet property="NumberField2" destination="v1a-hT-2Rc" id="KeY-ph-VXm"/>
                         <outlet property="NumberField3" destination="GRw-mc-Dcg" id="eD4-SA-IfQ"/>
