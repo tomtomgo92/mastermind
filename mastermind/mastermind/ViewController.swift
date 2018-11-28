@@ -24,6 +24,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var success = 0
     var maybe = 0
     var playCount = 0
+    var historicCode = [String]()
+    var historicIndices = [String]()
     
 
     
@@ -50,12 +52,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     {
         var str = ""
         for _ in 0..<success{
-            str = str + "👍🏼"
-            print("👍🏼")
+            str += "😁"
         }
         for _ in 0..<(maybe - success){
-            str = str + "🤞🏻"
-             print("🤞🏻")
+            str += "🤔"
         }
         
         return str
@@ -63,9 +63,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func message(u: String){
         if (success == 4) {
-//            print("Vous avez gagné !")
-//            print(number)
-            message.text = "Vous avez gagné !"
+            message.text = "🎉 Vous avez gagné ! 🎉"
         }
         if (playCount == 10){
             message.text = """
@@ -75,9 +73,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         else {
             print("Random: \(number)")
-//            print("Votre code: \(u)")
-//            print("Vous avez \(success) chiffre bien placé")
-//            print("Vous avez \(maybe - success) chiffre mal placé")
             message.text = """
             Vous avez \(success) chiffre bien placé
             Vous avez \(maybe - success) chiffre mal placé
@@ -89,6 +84,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBAction func BtnClicked(_ sender: Any) {
 
         var inputs = [NumberField0.text, NumberField1.text, NumberField2.text, NumberField3.text]
+        historicCode.append(theUserCode())
     
         success = 0
         maybe = 0
@@ -105,29 +101,30 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         checkMaybe(char, inputs as! Array<String>)
         
         }
-        
-        print(theUserCode())
+        historicIndices.append(displayEmoji(success, maybe))
         message(u: theUserCode())
         table.reloadData()
-        //displayEmoji(success, maybe)
 
     }
+    
     func theUserCode() -> String
     {
-          let userCode = NumberField0.text! + NumberField1.text! + NumberField2.text! + NumberField3.text!
-        
+        let userCode = NumberField0.text! + NumberField1.text! + NumberField2.text! + NumberField3.text!
         return userCode
         
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return playCount
     }
     
      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let row = indexPath.row
+        let count = self.historicCode.count - row - 1
         
-        cell.textLabel?.text = theUserCode()
-        cell.detailTextLabel?.text = displayEmoji(success, maybe)
+        cell.textLabel?.text = self.historicCode[count]
+        cell.detailTextLabel?.text = self.historicIndices[count]
         
         return cell
     }
