@@ -8,21 +8,27 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+
+    
     @IBOutlet weak var NumberField0: UITextField!
     @IBOutlet weak var NumberField1: UITextField!
     @IBOutlet weak var NumberField2: UITextField!
     @IBOutlet weak var NumberField3: UITextField!
     @IBOutlet weak var message: UILabel!
     
+    @IBOutlet weak var table: UITableView!
     let number = String(Int.random(in: 1000..<10000))
     var success = 0
     var maybe = 0
     var playCount = 0
+    
+
   
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
     }
     
     func checkSuccess(_ charUser: String, _ charRandom: String){
@@ -34,6 +40,11 @@ class ViewController: UIViewController {
         if(array.contains(char)){
             maybe += 1
         }
+    }
+    
+    func displayEmoji(success:Int,maybe:Int)
+    {
+       
     }
     
     func message(u: String){
@@ -62,7 +73,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func BtnClicked(_ sender: Any) {
-        let userCode = NumberField0.text! + NumberField1.text! + NumberField2.text! + NumberField3.text!
+
         var inputs = [NumberField0.text, NumberField1.text, NumberField2.text, NumberField3.text]
     
         success = 0
@@ -80,10 +91,30 @@ class ViewController: UIViewController {
         checkMaybe(char, inputs as! Array<String>)
         
         }
-        message(u: userCode)
+        
+        print(theUserCode())
+        message(u: theUserCode())
 
     }
+    func theUserCode() -> String
+    {
+          let userCode = NumberField0.text! + NumberField1.text! + NumberField2.text! + NumberField3.text!
+        
+        return userCode
+        
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
     
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        
+        cell.textLabel?.text = theUserCode()
+        cell.detailTextLabel?.text = "😘"
+        
+        return cell
+    }
 
 }
 
