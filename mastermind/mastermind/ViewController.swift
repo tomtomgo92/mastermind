@@ -63,13 +63,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func message(u: String){
         if (success == 4) {
-            message.text = "🎉 Vous avez gagné ! 🎉"
+            let alert = UIAlertController(title: "Well done!", message: "You found the code in \(u) try", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Niceu", style: .cancel, handler: nil))
+            
+            self.present(alert, animated: true)
         }
         if (playCount == 10){
-            message.text = """
-            C'est perdu boloss !
-            \(number)
-            """
+            let alert = UIAlertController(title: "C'est perdu boloss !", message: "The code was \(number)", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "You suck", style: .cancel, handler: nil))
+            
+            self.present(alert, animated: true)
         }
         else {
             print("Random: \(number)")
