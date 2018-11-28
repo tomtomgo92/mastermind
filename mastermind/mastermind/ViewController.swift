@@ -24,10 +24,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var playCount = 0
     
 
+    
   
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        print(number)
         
     }
     
@@ -42,9 +44,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
-    func displayEmoji(success:Int,maybe:Int)
+    func displayEmoji(_ success:Int, _ maybe:Int)
     {
-       
+        for _ in 0..<success{
+            print("👍🏼")
+        }
+        for _ in 0..<(maybe - success){
+             print("🤞🏻")
+        }
     }
     
     func message(u: String){
@@ -94,6 +101,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         print(theUserCode())
         message(u: theUserCode())
+        displayEmoji(success, maybe)
 
     }
     func theUserCode() -> String
@@ -111,7 +119,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
         cell.textLabel?.text = theUserCode()
-        cell.detailTextLabel?.text = "😘"
+        cell.detailTextLabel?.text = displayEmoji(success, maybe)
         
         return cell
     }
