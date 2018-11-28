@@ -11,6 +11,8 @@ import UIKit
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     
+
+    
     @IBOutlet weak var NumberField0: UITextField!
     @IBOutlet weak var NumberField1: UITextField!
     @IBOutlet weak var NumberField2: UITextField!
@@ -44,14 +46,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
-    func displayEmoji(_ success:Int, _ maybe:Int)
+    func displayEmoji(_ success:Int, _ maybe:Int) -> String
     {
+        var str = ""
         for _ in 0..<success{
+            str = str + "👍🏼"
             print("👍🏼")
         }
         for _ in 0..<(maybe - success){
+            str = str + "🤞🏻"
              print("🤞🏻")
         }
+        
+        return str
     }
     
     func message(u: String){
@@ -101,7 +108,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         print(theUserCode())
         message(u: theUserCode())
-        displayEmoji(success, maybe)
+        table.reloadData()
+        //displayEmoji(success, maybe)
 
     }
     func theUserCode() -> String
@@ -112,10 +120,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return playCount
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
         cell.textLabel?.text = theUserCode()
