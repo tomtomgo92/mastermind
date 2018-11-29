@@ -9,9 +9,9 @@
 import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
     
-
+    
+    
     
     @IBOutlet weak var NumberField0: UITextField!
     @IBOutlet weak var NumberField1: UITextField!
@@ -20,16 +20,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var message: UILabel!
     
     @IBOutlet weak var table: UITableView!
-    var number = String(Int.random(in: 1000..<10000))
+    let number = String(Int.random(in: 1000..<10000))
     var success = 0
     var maybe = 0
     var playCount = 0
     var historicCode = [String]()
     var historicIndices = [String]()
     
-
     
-  
+    
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -61,16 +61,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return str
     }
     
-    func messages(){
+    func message(u: String){
         if (success == 4) {
-            let alert = UIAlertController(title: "Well done!", message: "You found the code in \(playCount) try", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Well done!", message: "You found the code in \(u) try", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Niceu", style: .cancel, handler: nil))
-            self.present(alert, animated: true)
             
+            self.present(alert, animated: true)
         }
         if (playCount == 10){
             let alert = UIAlertController(title: "C'est perdu boloss !", message: "The code was \(number)", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "You suck", style: .cancel, handler: nil))
+            
             self.present(alert, animated: true)
         }
         else {
@@ -82,31 +83,31 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         
     }
-
+    
     @IBAction func BtnClicked(_ sender: Any) {
-
+        
         var inputs = [NumberField0.text, NumberField1.text, NumberField2.text, NumberField3.text]
         historicCode.append(theUserCode())
-    
+        
         success = 0
         maybe = 0
         playCount += 1
         
         
-       // Check numbers
-       for i in 0..<number.count{
-
-        let characters = Array(number)
-        let char = String(characters[i])
-        
-        checkSuccess(inputs[i]! , char)
-        checkMaybe(char, inputs as! Array<String>)
-        
+        // Check numbers
+        for i in 0..<number.count{
+            
+            let characters = Array(number)
+            let char = String(characters[i])
+            
+            checkSuccess(inputs[i]! , char)
+            checkMaybe(char, inputs as! Array<String>)
+            
         }
         historicIndices.append(displayEmoji(success, maybe))
-        messages()
+        message(u: theUserCode())
         table.reloadData()
-
+        
     }
     
     func theUserCode() -> String
@@ -120,7 +121,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return playCount
     }
     
-     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         let row = indexPath.row
         let count = self.historicCode.count - row - 1
@@ -131,16 +132,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return cell
     }
     
-    func resetGame(){
-        playCount = 0
-        number = String(Int.random(in: 1000..<10000))
-        historicCode.removeAll()
-        historicIndices.removeAll()
-        NumberField0.text = ""
-        NumberField1.text = ""
-        NumberField2.text = ""
-        NumberField3.text = ""
+    override var prefersStatusBarHidden: Bool {
+        return true
     }
-
+    
 }
 
