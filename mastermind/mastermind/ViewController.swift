@@ -34,7 +34,42 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     {
         super.viewDidLoad()
         print(number)
+
+ 
+        NumberField0.delegate = self as? UITextFieldDelegate
+        NumberField1.delegate = self as? UITextFieldDelegate
+        NumberField2.delegate = self as? UITextFieldDelegate
+        NumberField3.delegate = self as? UITextFieldDelegate
         
+        
+        NumberField0.addTarget(self, action: Selector(("textFieldDidChange:")), for: UIControl.Event.editingChanged)
+        NumberField1.addTarget(self, action: Selector(("textFieldDidChange:")), for: UIControl.Event.editingChanged)
+        NumberField2.addTarget(self, action: Selector(("textFieldDidChange:")), for: UIControl.Event.editingChanged)
+        NumberField3.addTarget(self, action: Selector(("textFieldDidChange:")), for: UIControl.Event.editingChanged)
+        
+
+    }
+    
+    func textFieldDidChange(textField: UITextField){
+        
+        let text = textField.text
+        
+        if (text?.utf16.count)! >= 1{
+            switch textField{
+            case NumberField0:
+                NumberField0.becomeFirstResponder()
+            case NumberField1:
+                NumberField1.becomeFirstResponder()
+            case NumberField2:
+                NumberField2.becomeFirstResponder()
+            case NumberField3:
+                NumberField3.resignFirstResponder()
+            default:
+                break
+            }
+        }else{
+            
+        }
     }
     
     func checkSuccess(_ charUser: String, _ charRandom: String){
@@ -66,12 +101,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             let alert = UIAlertController(title: "Well done!", message: "You found the code in \(playCount) try", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Niceu", style: .cancel, handler: nil))
             self.present(alert, animated: true)
-            
+            resetGame()
         }
         if (playCount == 10){
             let alert = UIAlertController(title: "C'est perdu boloss !", message: "The code was \(number)", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "You suck", style: .cancel, handler: nil))
             self.present(alert, animated: true)
+            resetGame()
         }
         else {
             print("Random: \(number)")
@@ -141,6 +177,51 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         NumberField2.text = ""
         NumberField3.text = ""
     }
-
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
+    func checkMaxLength(textField: UITextField!, maxLength: Int) {
+        if (textField.text!.count > maxLength) {
+            textField.deleteBackward()
+        }
+    }
+    @IBAction func TextChange(_ sender: Any) {
+        checkMaxLength(textField: NumberField0, maxLength: 1)
+        checkMaxLength(textField: NumberField1, maxLength: 1)
+        checkMaxLength(textField: NumberField2, maxLength: 1)
+        checkMaxLength(textField: NumberField3, maxLength: 1)
+    }
+    
+//    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool
+//    {
+//
+//        let currentString: String = textField.text! as String
+//        let newString: String =
+//            currentString.replacingCharacters(in: range, with: string) as String
+//        let newLength: Int = newString.length
+//        if textField == NumberField0 {
+//            if newLength == 3 {
+//                NumberField1.becomeFirstResponder()
+//            }
+//        }
+//        if textField == NumberField1{
+//            if newLength == 3 {
+//                NumberField2.becomeFirstResponder()
+//            }
+//        }
+//        if textField  == NumberField2 {
+//            if newLength == 3 {
+//                NumberField3.becomeFirstResponder()
+//            }
+//        }
+//        if textField == NumberField3 {
+//            if newLength == 3 {
+//                self.view.endEditing(true)
+//            }
+//        }
+//        return true
+//    }
 }
 
