@@ -9,9 +9,9 @@
 import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
     
-
+    
+    
     
     @IBOutlet weak var NumberField0: UITextField!
     @IBOutlet weak var NumberField1: UITextField!
@@ -27,9 +27,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var historicCode = [String]()
     var historicIndices = [String]()
     
-
     
-  
+    
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -83,31 +83,31 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         
     }
-
+    
     @IBAction func BtnClicked(_ sender: Any) {
-
+        
         var inputs = [NumberField0.text, NumberField1.text, NumberField2.text, NumberField3.text]
         historicCode.append(theUserCode())
-    
+        
         success = 0
         maybe = 0
         playCount += 1
         
         
-       // Check numbers
-       for i in 0..<number.count{
-
-        let characters = Array(number)
-        let char = String(characters[i])
-        
-        checkSuccess(inputs[i]! , char)
-        checkMaybe(char, inputs as! Array<String>)
-        
+        // Check numbers
+        for i in 0..<number.count{
+            
+            let characters = Array(number)
+            let char = String(characters[i])
+            
+            checkSuccess(inputs[i]! , char)
+            checkMaybe(char, inputs as! Array<String>)
+            
         }
         historicIndices.append(displayEmoji(success, maybe))
         message(u: theUserCode())
         table.reloadData()
-
+        
     }
     
     func theUserCode() -> String
@@ -121,7 +121,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return playCount
     }
     
-     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         let row = indexPath.row
         let count = self.historicCode.count - row - 1
@@ -135,6 +135,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override var prefersStatusBarHidden: Bool {
         return true
     }
-
+    
 }
 
