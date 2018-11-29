@@ -68,10 +68,10 @@
                                             <constraint firstAttribute="width" constant="30" id="vD5-hU-HVH"/>
                                         </constraints>
                                         <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES"/>
                                         <connections>
-                                            <action selector="TextChange:" destination="BYZ-38-t0r" eventType="editingChanged" id="ZoM-ig-Yg8"/>
+                                            <action selector="TextUpdate:" destination="BYZ-38-t0r" eventType="editingChanged" id="NAV-rV-Rn0"/>
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3s8-HT-Cct">
@@ -81,9 +81,9 @@
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" keyboardAppearance="alert" returnKeyType="go" enablesReturnKeyAutomatically="YES"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES"/>
                                         <connections>
-                                            <action selector="TextChange:" destination="BYZ-38-t0r" eventType="editingChanged" id="9uz-hN-1B7"/>
+                                            <action selector="TextUpdate:" destination="BYZ-38-t0r" eventType="editingChanged" id="iEP-0f-FRh"/>
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="v1a-hT-2Rc">
@@ -95,7 +95,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                         <connections>
-                                            <action selector="TextChange:" destination="BYZ-38-t0r" eventType="editingChanged" id="Oc3-Za-h08"/>
+                                            <action selector="TextUpdate:" destination="BYZ-38-t0r" eventType="editingChanged" id="R0b-ts-csB"/>
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GRw-mc-Dcg">
@@ -107,7 +107,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                         <connections>
-                                            <action selector="TextChange:" destination="BYZ-38-t0r" eventType="editingChanged" id="NjN-pl-UHm"/>
+                                            <action selector="TextUpdate:" destination="BYZ-38-t0r" eventType="editingChanged" id="CGc-lw-8si"/>
                                         </connections>
                                     </textField>
                                 </subviews>

@@ -36,40 +36,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         print(number)
 
  
-        NumberField0.delegate = self as? UITextFieldDelegate
-        NumberField1.delegate = self as? UITextFieldDelegate
-        NumberField2.delegate = self as? UITextFieldDelegate
-        NumberField3.delegate = self as? UITextFieldDelegate
-        
-        
-        NumberField0.addTarget(self, action: Selector(("textFieldDidChange:")), for: UIControl.Event.editingChanged)
-        NumberField1.addTarget(self, action: Selector(("textFieldDidChange:")), for: UIControl.Event.editingChanged)
-        NumberField2.addTarget(self, action: Selector(("textFieldDidChange:")), for: UIControl.Event.editingChanged)
-        NumberField3.addTarget(self, action: Selector(("textFieldDidChange:")), for: UIControl.Event.editingChanged)
-        
+//        NumberField0.delegate = self as? UITextFieldDelegate
+//        NumberField1.delegate = self as? UITextFieldDelegate
+//        NumberField2.delegate = self  as? UITextFieldDelegate
+//        NumberField3.delegate = self as? UITextFieldDelegate
 
-    }
-    
-    func textFieldDidChange(textField: UITextField){
-        
-        let text = textField.text
-        
-        if (text?.utf16.count)! >= 1{
-            switch textField{
-            case NumberField0:
-                NumberField0.becomeFirstResponder()
-            case NumberField1:
-                NumberField1.becomeFirstResponder()
-            case NumberField2:
-                NumberField2.becomeFirstResponder()
-            case NumberField3:
-                NumberField3.resignFirstResponder()
-            default:
-                break
-            }
-        }else{
-            
-        }
     }
     
     func checkSuccess(_ charUser: String, _ charRandom: String){
@@ -187,41 +158,29 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             textField.deleteBackward()
         }
     }
-    @IBAction func TextChange(_ sender: Any) {
-        checkMaxLength(textField: NumberField0, maxLength: 1)
-        checkMaxLength(textField: NumberField1, maxLength: 1)
-        checkMaxLength(textField: NumberField2, maxLength: 1)
-        checkMaxLength(textField: NumberField3, maxLength: 1)
-    }
     
-//    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool
-//    {
-//
-//        let currentString: String = textField.text! as String
-//        let newString: String =
-//            currentString.replacingCharacters(in: range, with: string) as String
-//        let newLength: Int = newString.length
-//        if textField == NumberField0 {
-//            if newLength == 3 {
-//                NumberField1.becomeFirstResponder()
-//            }
-//        }
-//        if textField == NumberField1{
-//            if newLength == 3 {
-//                NumberField2.becomeFirstResponder()
-//            }
-//        }
-//        if textField  == NumberField2 {
-//            if newLength == 3 {
-//                NumberField3.becomeFirstResponder()
-//            }
-//        }
-//        if textField == NumberField3 {
-//            if newLength == 3 {
-//                self.view.endEditing(true)
-//            }
-//        }
-//        return true
-//    }
+    
+    @IBAction func TextUpdate(_ sender: UITextField) {
+        checkMaxLength(textField: sender, maxLength: 1)
+        
+        let text = sender.text
+        
+        if (text?.utf16.count)! >= 1{
+            switch sender{
+            case NumberField0:
+                NumberField1.becomeFirstResponder()
+            case NumberField1:
+                NumberField2.becomeFirstResponder()
+            case NumberField2:
+                NumberField3.becomeFirstResponder()
+            case NumberField3:
+                NumberField3.resignFirstResponder()
+            default:
+                break
+            }
+        }else{
+            
+        }
+    }
 }
 
