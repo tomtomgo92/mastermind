@@ -20,7 +20,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var message: UILabel!
     
     @IBOutlet weak var table: UITableView!
-    let number = String(Int.random(in: 1000..<10000))
+    var number = String(Int.random(in: 1000..<10000))
     var success = 0
     var maybe = 0
     var playCount = 0
@@ -61,17 +61,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return str
     }
     
-    func message(u: String){
+    func messages(){
         if (success == 4) {
-            let alert = UIAlertController(title: "Well done!", message: "You found the code in \(u) try", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Well done!", message: "You found the code in \(playCount) try", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Niceu", style: .cancel, handler: nil))
-            
             self.present(alert, animated: true)
+            
         }
         if (playCount == 10){
             let alert = UIAlertController(title: "C'est perdu boloss !", message: "The code was \(number)", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "You suck", style: .cancel, handler: nil))
-            
             self.present(alert, animated: true)
         }
         else {
@@ -105,7 +104,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         }
         historicIndices.append(displayEmoji(success, maybe))
-        message(u: theUserCode())
+        messages()
         table.reloadData()
 
     }
@@ -131,6 +130,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         return cell
     }
-
+    
+    func resetGame(){
+        playCount = 0
+        number = String(Int.random(in: 1000..<10000))
+        historicCode.removeAll()
+        historicIndices.removeAll()
+        NumberField0.text = ""
+        NumberField1.text = ""
+        NumberField2.text = ""
+        NumberField3.text = ""
+    }
 }
 
