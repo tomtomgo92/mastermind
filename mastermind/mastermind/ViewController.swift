@@ -35,12 +35,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.viewDidLoad()
         print(number)
 
- 
-//        NumberField0.delegate = self as? UITextFieldDelegate
-//        NumberField1.delegate = self as? UITextFieldDelegate
-//        NumberField2.delegate = self  as? UITextFieldDelegate
-//        NumberField3.delegate = self as? UITextFieldDelegate
-
     }
     
     func checkSuccess(_ charUser: String, _ charRandom: String){
