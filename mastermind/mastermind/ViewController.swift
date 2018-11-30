@@ -166,7 +166,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         success = 0
         maybe = 0
         playCount += 1
-        
+
         
         // Check numbers
         for i in 0..<number.count{
@@ -183,5 +183,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         table.reloadData()
         
     }
+    @IBAction func TextFieldSelected(_ sender: UITextField) {
+        NumberField0.backgroundColor = UIColor.darkGray
+        NumberField1.backgroundColor = UIColor.darkGray
+        NumberField2.backgroundColor = UIColor.darkGray
+        NumberField3.backgroundColor = UIColor.darkGray
+        sender.backgroundColor = UIColor.gray
+    }
+    
 }
+//NumberField0.backgroundColor = UIColor.gray
 

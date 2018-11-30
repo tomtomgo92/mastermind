@@ -75,10 +75,11 @@
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="f3O-3Z-0M1"/>
                                             <constraint firstAttribute="height" constant="60" id="sCs-AA-cBs"/>
                                         </constraints>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="Rockwell-Regular" family="Rockwell" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES"/>
                                         <connections>
+                                            <action selector="TextFieldSelected:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="8Mh-Qa-FQc"/>
                                             <action selector="TextUpdate:" destination="BYZ-38-t0r" eventType="editingChanged" id="NAV-rV-Rn0"/>
                                         </connections>
                                     </textField>
@@ -90,10 +91,11 @@
                                             <constraint firstAttribute="height" constant="60" id="FT8-nM-Uce"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="oCn-Cu-Quw"/>
                                         </constraints>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="Rockwell-Regular" family="Rockwell" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES"/>
                                         <connections>
+                                            <action selector="TextFieldSelected:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="LcZ-ay-BKh"/>
                                             <action selector="TextUpdate:" destination="BYZ-38-t0r" eventType="editingChanged" id="iEP-0f-FRh"/>
                                         </connections>
                                     </textField>
@@ -105,10 +107,11 @@
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="VlP-es-LLc"/>
                                             <constraint firstAttribute="height" constant="60" id="Wjq-9p-ojn"/>
                                         </constraints>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="Rockwell-Regular" family="Rockwell" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                         <connections>
+                                            <action selector="TextFieldSelected:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="tkO-Oz-TMG"/>
                                             <action selector="TextUpdate:" destination="BYZ-38-t0r" eventType="editingChanged" id="R0b-ts-csB"/>
                                         </connections>
                                     </textField>
@@ -120,10 +123,11 @@
                                             <constraint firstAttribute="height" constant="60" id="LrZ-d5-MWR"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="fwF-kR-GRg"/>
                                         </constraints>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="Rockwell-Regular" family="Rockwell" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                         <connections>
+                                            <action selector="TextFieldSelected:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="PIo-zE-kmS"/>
                                             <action selector="TextUpdate:" destination="BYZ-38-t0r" eventType="editingChanged" id="CGc-lw-8si"/>
                                         </connections>
                                     </textField>
